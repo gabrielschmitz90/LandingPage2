@@ -1,0 +1,449 @@
+:root {
+    --bg-deep: #0a0e1a;
+    --bg-card: #151b2d;
+    --primary: #3b82f6;
+    --accent: #93c5fd;
+    --text-main: #f3f4f6;
+    --text-dim: #94a3b8;
+    --neon-glow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    padding: 25px 10%;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background: rgba(10, 1, 24, 0.8);
+    backdrop-filter: blur(15px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; }
+.logo span { color: var(--primary); }
+
+nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+
+nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.9rem; }
+
+.btn-nav {
+    background: var(--primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    padding: 180px 10% 100px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #0a0e1a 100%);
+}
+
+.tag {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--primary);
+}
+
+.hero h1 { font-size: 4rem; margin-top: 20px; font-weight: 800; }
+.name-highlight { color: var(--primary); text-shadow: var(--neon-glow); }
+
+.hero h2 { font-size: 1.5rem; color: var(--text-dim); margin: 15px 0 30px; font-weight: 400; }
+
+.hero p { max-width: 600px; margin: 0 auto 40px; color: var(--text-dim); }
+
+.btn-main {
+    background: var(--primary);
+    color: white;
+    padding: 18px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: var(--neon-glow);
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+    background: var(--bg-card);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.stat-item h3 { font-size: 2.5rem; color: var(--primary); }
+.stat-item p { color: var(--text-dim); font-size: 0.9rem; }
+
+/* Portfolio Section */
+.portfolio { padding: 100px 10%; }
+.section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; position: relative; z-index: 10; }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.project-card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.4s;
+    position: relative;
+    z-index: 10;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+}
+
+.project-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+
+.tech-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    margin-top: 15px;
+    margin-right: 5px;
+}
+
+/* CTA Box */
+.cta-section { padding: 100px 10%; }
+.cta-box {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.btn-final {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 25px 0;
+}
+
+.phone-display { display: block; font-size: 0.9rem; opacity: 0.8; }
+
+footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+
+/* 3D Background Effects */
+.hero, .portfolio, .cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-3d, .portfolio-bg-3d, .cta-bg-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    perspective: 1000px;
+    z-index: 0;
+}
+
+.cube, .sphere, .ring, .floating-shape, .glow-orb {
+    pointer-events: auto;
+}
+
+.hero-content, .cta-box, .section-title, .project-grid {
+    position: relative;
+    z-index: 10;
+}
+
+/* 3D Cubes */
+.cube {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 197, 253, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    animation: float-rotate 8s ease-in-out infinite;
+    box-shadow: 
+        0 0 30px rgba(59, 130, 246, 0.25),
+        inset 0 0 20px rgba(59, 130, 246, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.cube:hover {
+    transform: scale(1.2) rotateX(20deg) rotateY(20deg) !important;
+    box-shadow: 
+        0 0 50px rgba(59, 130, 246, 0.4),
+        inset 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.cube-1 {
+    top: 15%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.cube-2 {
+    top: 60%;
+    right: 12%;
+    width: 60px;
+    height: 60px;
+    animation-delay: -2s;
+}
+
+/* 3D Sphere */
+.sphere {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(147, 197, 253, 0.3), rgba(59, 130, 246, 0.1) 50%, transparent);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    animation: float-sphere 10s ease-in-out infinite;
+    box-shadow: 
+        0 0 60px rgba(59, 130, 246, 0.3),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.sphere:hover {
+    transform: scale(1.3) !important;
+    box-shadow: 
+        0 0 100px rgba(59, 130, 246, 0.5),
+        inset -20px -20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.sphere-1 {
+    top: 30%;
+    right: 20%;
+    animation-delay: -1s;
+}
+
+/* 3D Ring */
+.ring {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 3px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    animation: ring-spin 15s linear infinite;
+    box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.25),
+        inset 0 0 20px rgba(59, 130, 246, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.ring:hover {
+    transform: scale(1.2) rotateX(70deg) !important;
+    box-shadow: 
+        0 0 50px rgba(59, 130, 246, 0.4),
+        inset 0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.ring::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(147, 197, 253, 0.25);
+    border-radius: 50%;
+}
+
+.ring-1 {
+    bottom: 15%;
+    left: 15%;
+}
+
+/* Floating Shapes for Portfolio */
+.floating-shape {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(37, 99, 235, 0.06));
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    animation: float-rotate 12s ease-in-out infinite;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.floating-shape:hover {
+    transform: scale(1.2) rotate(25deg) !important;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+    opacity: 0.6;
+}
+
+.shape-1 {
+    top: 5%;
+    right: 2%;
+    width: 60px;
+    height: 60px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation-delay: 0s;
+    opacity: 0.4;
+}
+
+.shape-2 {
+    top: 30%;
+    left: 1%;
+    width: 45px;
+    height: 45px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation-delay: -3s;
+    opacity: 0.3;
+}
+
+.shape-3 {
+    bottom: 8%;
+    right: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation-delay: -5s;
+    opacity: 0.35;
+}
+
+/* Glowing Orbs for CTA */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: pulse-glow 4s ease-in-out infinite;
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.glow-orb:hover {
+    transform: scale(1.5) !important;
+    filter: blur(60px);
+}
+
+.orb-1 {
+    top: -50px;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    background: rgba(59, 130, 246, 0.3);
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    bottom: -80px;
+    right: 15%;
+    width: 250px;
+    height: 250px;
+    background: rgba(147, 197, 253, 0.25);
+    animation-delay: -2s;
+}
+
+/* Animations */
+@keyframes float-rotate {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    25% {
+        transform: translateY(-8px) rotateX(5deg) rotateY(8deg) rotateZ(3deg);
+    }
+    50% {
+        transform: translateY(-5px) rotateX(10deg) rotateY(15deg) rotateZ(5deg);
+    }
+    75% {
+        transform: translateY(-12px) rotateX(5deg) rotateY(8deg) rotateZ(3deg);
+    }
+}
+
+@keyframes float-sphere {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.05);
+    }
+}
+
+@keyframes ring-spin {
+    0% {
+        transform: rotateX(60deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(60deg) rotateZ(360deg);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Highlight card with extra 3D effect */
+.highlight-card {
+    background: linear-gradient(135deg, var(--bg-card), rgba(59, 130, 246, 0.08));
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+}
+
+.highlight-card:hover {
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .stats { flex-direction: column; gap: 30px; text-align: center; }
+    
+    .cube, .sphere, .ring {
+        opacity: 0.4;
+        transform: scale(0.7);
+    }
+    
+    /* Portfolio shapes quase invisíveis no mobile */
+    .portfolio-bg-3d .floating-shape {
+        opacity: 0.15;
+        transform: scale(0.5);
+        animation: none; /* Remove animação no mobile */
+    }
+    
+    .glow-orb {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}

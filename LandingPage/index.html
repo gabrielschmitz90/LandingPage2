@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Schmitz | Dev & Data Expert</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">PORTFÓLIO<span>.dev</span></div>
+            <ul>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#portfolio">Projetos</a></li>
+                <li><a href="https://wa.me/5532998242393" class="btn-nav">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg-3d">
+            <div class="cube cube-1"></div>
+            <div class="cube cube-2"></div>
+            <div class="sphere sphere-1"></div>
+            <div class="ring ring-1"></div>
+        </div>
+        <div class="hero-content">
+            <span class="tag">Disponível para novos projetos</span>
+            <h1>Olá, eu sou <span class="name-highlight">Gabriel Schmitz</span></h1>
+            <h2>Desenvolvedor ADS & Especialista em Automação de Dados</h2>
+            <p>Transformo pilhas de dados em insights estratégicos e processos manuais em automações inteligentes com Python.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/5532998242393" class="btn-main">Quero uma Landing Page</a>
+                <a href="#portfolio" class="btn-sub">Ver Portfólio</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="stats">
+        <div class="stat-item">
+            <h3>+1000</h3>
+            <p>Dados Processados</p>
+        </div>
+        <div class="stat-item">
+            <h3>Python</h3>
+            <p>Automação de Excel</p>
+        </div>
+        <div class="stat-item">
+            <h3>Power BI</h3>
+            <p>Dashboards de Elite</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-bg-3d">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        <h2 class="section-title">O que eu já construí</h2>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Inteligência de Dados</h3>
+                <p>Criação de Dashboards no <strong>Power BI</strong> extraindo milhares de linhas de dados brutos e transformando-os em visualizações que direcionam decisões de negócio.</p>
+                <span class="tech-tag">Power BI</span> <span class="tech-tag">ETL</span>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fab fa-python"></i></div>
+                <h3>Automação de Processos</h3>
+                <p>Desenvolvimento de scripts em <strong>Python</strong> para automatizar tarefas repetitivas no Excel, reduzindo erros humanos e economizando horas de trabalho.</p>
+                <span class="tech-tag">Python</span> <span class="tech-tag">Pandas</span>
+            </div>
+
+            <div class="project-card highlight-card">
+                <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Landing Pages Premium</h3>
+                <p>Criação de sites modernos e rápidos (HTML/CSS), focados na psicologia das cores para atrair e converter clientes para o seu negócio.</p>
+                <span class="tech-tag">HTML5</span> <span class="tech-tag">CSS3</span> <span class="tech-tag">UI/UX</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-bg-3d">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+        <div class="cta-box">
+            <h2>Precisa de um site que realmente venda?</h2>
+            <p>Clique abaixo e vamos conversar sobre como posso unir design e dados para o seu sucesso.</p>
+            <a href="https://wa.me/5532998242393" class="btn-final">
+                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
+            <span class="phone-display">32 99824-2393</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Gabriel Schmitz | Desenvolvedor de Soluções Digitais</p>
+    </footer>
+
+    <script>
+        // Mouse interaction for 3D elements
+        let mouseX = 0, mouseY = 0;
+        const elements3D = [];
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.cube, .sphere, .ring, .floating-shape, .glow-orb').forEach((el, i) => {
+                elements3D.push({
+                    el: el,
+                    baseX: 0,
+                    baseY: 0,
+                    speed: 0.02 + (i * 0.008),
+                    rotationSpeed: 0.01 + (i * 0.005)
+                });
+            });
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) / window.innerWidth;
+            mouseY = (e.clientY - window.innerHeight / 2) / window.innerHeight;
+            
+            elements3D.forEach((item, i) => {
+                // Diferentes intensidades para diferentes seções
+                const isPortfolio = item.el.closest('.portfolio-bg-3d');
+                const intensity = isPortfolio ? 0.3 : 1; // Portfólio mais sutil
+                
+                const moveX = mouseX * 80 * item.speed * (i % 2 === 0 ? 1 : -1) * intensity;
+                const moveY = mouseY * 60 * item.speed * (i % 2 === 0 ? -1 : 1) * intensity;
+                const rotateX = mouseY * 30 * item.rotationSpeed * intensity;
+                const rotateY = mouseX * 30 * item.rotationSpeed * intensity;
+                
+                item.el.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        });
+        
+        // Scroll parallax combined with mouse
+        document.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Hero 3D elements parallax
+            document.querySelectorAll('.hero-bg-3d .cube, .hero-bg-3d .sphere, .hero-bg-3d .ring').forEach((el, i) => {
+                const speed = 0.05 + (i * 0.02);
+                const rotation = scrollY * speed * 0.5;
+                const baseTransform = el.style.transform || '';
+                el.style.setProperty('--scroll-y', `${scrollY * speed}px`);
+            });
+            
+            // Portfolio floating shapes parallax (mais sutil)
+            document.querySelectorAll('.portfolio-bg-3d .floating-shape').forEach((el, i) => {
+                const rect = el.closest('.portfolio').getBoundingClientRect();
+                const sectionScroll = -rect.top;
+                const speed = 0.01 + (i * 0.005); // Reduzido para ser mais sutil
+                el.style.setProperty('--scroll-y', `${sectionScroll * speed}px`);
+            });
+            
+            // CTA glow orbs parallax
+            document.querySelectorAll('.cta-bg-3d .glow-orb').forEach((el, i) => {
+                const rect = el.closest('.cta-section').getBoundingClientRect();
+                const sectionScroll = -rect.top;
+                const speed = 0.02 + (i * 0.01);
+                el.style.setProperty('--scroll-y', `${sectionScroll * speed}px`);
+            });
+        });
+    </script>
+
+</body>
+</html>
