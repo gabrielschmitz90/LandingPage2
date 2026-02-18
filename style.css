@@ -80,6 +80,38 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     text-decoration: none;
     font-weight: 700;
     box-shadow: var(--neon-glow);
+    transition: all 0.3s ease;
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+.btn-sub {
+    background: transparent;
+    color: var(--text-main);
+    padding: 18px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.btn-sub:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.hero-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* Stats Section */
@@ -426,24 +458,168 @@ footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0
     box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
 }
 
+/* Responsividade Tablet */
+@media (max-width: 1024px) {
+    header { padding: 20px 5%; }
+    .hero { padding: 160px 5% 80px; }
+    .hero h1 { font-size: 3.5rem; }
+    .portfolio, .cta-section { padding: 80px 5%; }
+}
+
+/* Responsividade Mobile */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .stats { flex-direction: column; gap: 30px; text-align: center; }
-    
-    .cube, .sphere, .ring {
-        opacity: 0.4;
-        transform: scale(0.7);
+    /* Header Mobile */
+    header { 
+        padding: 15px 5%; 
+        background: rgba(10, 14, 26, 0.95);
     }
     
-    /* Portfolio shapes quase invisíveis no mobile */
+    nav ul { 
+        gap: 15px; 
+    }
+    
+    nav a { 
+        font-size: 0.8rem; 
+    }
+    
+    .btn-nav {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+    
+    /* Hero Mobile */
+    .hero { 
+        padding: 120px 5% 60px; 
+        text-align: center;
+    }
+    
+    .hero h1 { 
+        font-size: 2.2rem; 
+        line-height: 1.2;
+        margin-top: 15px;
+    }
+    
+    .hero h2 { 
+        font-size: 1.1rem; 
+        margin: 10px 0 20px;
+    }
+    
+    .hero p { 
+        font-size: 0.9rem;
+        margin: 0 auto 30px;
+        padding: 0 10px;
+    }
+    
+    /* Botões Hero Mobile */
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .btn-main, .btn-sub {
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+    
+    /* Stats Mobile */
+    .stats { 
+        flex-direction: column; 
+        gap: 25px; 
+        text-align: center;
+        padding: 40px 5%;
+    }
+    
+    .stat-item h3 { 
+        font-size: 2rem; 
+    }
+    
+    /* Portfolio Mobile */
+    .portfolio { 
+        padding: 60px 5%; 
+    }
+    
+    .section-title { 
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-card {
+        padding: 25px;
+    }
+    
+    .project-icon { 
+        font-size: 2rem; 
+    }
+    
+    /* CTA Mobile */
+    .cta-section { 
+        padding: 60px 5%; 
+    }
+    
+    .cta-box {
+        padding: 40px 20px;
+        border-radius: 20px;
+    }
+    
+    .btn-final {
+        padding: 15px 30px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Efeitos 3D Mobile - Reduzidos */
+    .cube, .sphere, .ring {
+        opacity: 0.3;
+        transform: scale(0.6);
+    }
+    
     .portfolio-bg-3d .floating-shape {
-        opacity: 0.15;
-        transform: scale(0.5);
-        animation: none; /* Remove animação no mobile */
+        opacity: 0.1;
+        transform: scale(0.4);
+        animation: none;
     }
     
     .glow-orb {
-        width: 100px !important;
-        height: 100px !important;
+        width: 80px !important;
+        height: 80px !important;
+        opacity: 0.6;
+    }
+}
+
+/* Mobile Extra Pequeno */
+@media (max-width: 480px) {
+    .hero h1 { 
+        font-size: 1.8rem; 
+    }
+    
+    .hero h2 { 
+        font-size: 1rem; 
+    }
+    
+    .logo { 
+        font-size: 1.2rem; 
+    }
+    
+    nav ul { 
+        gap: 10px; 
+    }
+    
+    .project-card {
+        padding: 20px;
+    }
+    
+    .cta-box {
+        padding: 30px 15px;
     }
 }
