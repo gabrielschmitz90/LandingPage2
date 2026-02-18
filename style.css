@@ -13,10 +13,16 @@
     font-family: 'Inter', sans-serif;
 }
 
+h1, h2, h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
 body {
     background-color: var(--bg-deep);
     color: var(--text-main);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
 /* Header */
@@ -25,8 +31,10 @@ header {
     position: fixed;
     width: 100%;
     z-index: 100;
-    background: rgba(10, 1, 24, 0.8);
-    backdrop-filter: blur(15px);
+    background: rgba(10, 14, 26, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(147, 197, 253, 0.1);
+    box-shadow: 0 8px 32px rgba(10, 14, 26, 0.1);
 }
 
 nav {
@@ -65,12 +73,31 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     border: 1px solid var(--primary);
 }
 
-.hero h1 { font-size: 4rem; margin-top: 20px; font-weight: 800; }
+.hero h1 { 
+    font-size: 4rem; 
+    margin-top: 20px; 
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
 .name-highlight { color: var(--primary); text-shadow: var(--neon-glow); }
 
-.hero h2 { font-size: 1.5rem; color: var(--text-dim); margin: 15px 0 30px; font-weight: 400; }
+.hero h2 { 
+    font-size: 1.5rem; 
+    color: var(--text-dim); 
+    margin: 15px 0 30px; 
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+}
 
-.hero p { max-width: 600px; margin: 0 auto 40px; color: var(--text-dim); }
+.hero p { 
+    max-width: 600px; 
+    margin: 0 auto 40px; 
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
 
 .btn-main {
     background: var(--primary);
@@ -80,12 +107,30 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     text-decoration: none;
     font-weight: 700;
     box-shadow: var(--neon-glow);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.4s ease;
 }
 
 .btn-main:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.7), 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.btn-main:hover::before {
+    left: 100%;
 }
 
 .btn-sub {
@@ -96,14 +141,33 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     text-decoration: none;
     font-weight: 600;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin-left: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sub::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.1);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .btn-sub:hover {
     border-color: var(--primary);
     color: var(--primary);
     transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
+}
+
+.btn-sub:hover::before {
+    opacity: 1;
 }
 
 .hero-btns {
@@ -128,7 +192,17 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
 
 /* Portfolio Section */
 .portfolio { padding: 100px 10%; }
-.section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; position: relative; z-index: 10; }
+.section-title { 
+    text-align: center; 
+    margin-bottom: 60px; 
+    font-size: 2.5rem; 
+    position: relative; 
+    z-index: 10;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
 
 .project-grid {
     display: grid;
@@ -139,31 +213,72 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
 }
 
 .project-card {
-    background: var(--bg-card);
+    background: rgba(21, 27, 45, 0.6);
+    backdrop-filter: blur(12px);
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.4s;
+    border: 1px solid rgba(147, 197, 253, 0.12);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     z-index: 10;
+    overflow: hidden;
+}
+
+.project-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+    border-color: rgba(147, 197, 253, 0.25);
+    box-shadow: 0 15px 50px rgba(59, 130, 246, 0.25), inset 0 0 20px rgba(59, 130, 246, 0.05);
 }
 
 .project-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 
 .tech-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.05);
+    background: rgba(139, 92, 246, 0.12);
+    color: #c4b5fd;
     padding: 4px 12px;
     border-radius: 5px;
     font-size: 0.7rem;
     margin-top: 15px;
     margin-right: 5px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tech-tag:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
 }
 
 /* CTA Box */
@@ -173,6 +288,18 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     padding: 60px;
     border-radius: 30px;
     text-align: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.3s;
+}
+
+.cta-box h2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.5s;
+}
+
+.cta-box p {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.7s;
 }
 
 .btn-final {
@@ -185,6 +312,30 @@ nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-s
     font-weight: 800;
     font-size: 1.2rem;
     margin: 25px 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.4s ease;
+}
+
+.btn-final:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.5), 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+.btn-final:hover::before {
+    left: 100%;
 }
 
 .phone-display { display: block; font-size: 0.9rem; opacity: 0.8; }
@@ -403,6 +554,31 @@ footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0
 }
 
 /* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-on-scroll {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
 @keyframes float-rotate {
     0%, 100% {
         transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
@@ -555,6 +731,10 @@ footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0
     
     .project-card {
         padding: 25px;
+    }
+    
+    .project-card::before {
+        opacity: 0 !important;
     }
     
     .project-icon { 

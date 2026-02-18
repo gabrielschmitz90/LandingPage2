@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Schmitz | Dev & Data Expert</title>
-    <link rel="stylesheet" href="/LandingPage2/style.css">
+    <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -120,6 +120,44 @@
                     speed: 0.02 + (i * 0.008),
                     rotationSpeed: 0.01 + (i * 0.005)
                 });
+            });
+
+            // Spotlight effect para project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const xPercent = (x / rect.width) * 100;
+                    const yPercent = (y / rect.height) * 100;
+                    
+                    card.style.setProperty('--spotlight-x', xPercent + '%');
+                    card.style.setProperty('--spotlight-y', yPercent + '%');
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--spotlight-x', '50%');
+                    card.style.setProperty('--spotlight-y', '50%');
+                });
+            });
+
+            // Fade-in-up animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-on-scroll');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-title, .project-card, .cta-box').forEach(el => {
+                observer.observe(el);
             });
         });
         
